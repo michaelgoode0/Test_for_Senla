@@ -22,27 +22,8 @@ public class Initializer {
     Authorization authorization = new Authorization(cardService);
 
     public void run() throws Exception {
-        MenuController menu = new MenuController(authorization,new Builder(authorization,cardService), new Navigator());
+        MenuController menu = new MenuController(authorization, new Builder(authorization, cardService), new Navigator());
         menu.run();
     }
-      /*  for(var i:cardDAO.getListOfCards()){
-            System.out.println(i.toString());
-        }
-        String inputCardNumber=new Scanner(System.in).nextLine();
-        String inputCode=new Scanner(System.in).nextLine();
-
-        cardService.compareCardNumber(inputCardNumber);
-        Card card = cardService.findCardNumber(inputCardNumber,Integer.parseInt(inputCode),cardDAO.getListOfCards());
-        if(card!=null){
-            cardService.addToBalance(1000,card);
-        }*/
-       /* Card card = new Card("6770-6500-1281-2831",4444,40);
-        System.out.println(card.toString());
-        cardDAO.saveCard(card);
-        *//*String inputCardNumber=new Scanner(System.in).nextLine();
-        cardService.compareCardNumber(inputCardNumber);*//*
-        cardService.addToBalance(32,card);
-        cardDAO.update(card);
-        System.out.println(card.getBalance());*/
 }
 

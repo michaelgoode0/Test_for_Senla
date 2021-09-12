@@ -31,7 +31,7 @@ public class CardService {
 
     public boolean compareCardNumber(String cardNumber) {
 
-        String REGEX = "[0-9][0-9][0-9][0-9]-[0-9][0-9][0-9][0-9]-[0-9][0-9][0-9][0-9]-[0-9][0-9][0-9][0-9]";
+        String REGEX = "\\d\\d\\d\\d-\\d\\d\\d\\d-\\d\\d\\d\\d-\\d\\d\\d\\d";
         Pattern pattern = Pattern.compile(REGEX);
         Matcher matcher = pattern.matcher(cardNumber);
         if(matcher.matches()) {
