@@ -6,6 +6,7 @@ import com.senla.services.CardService;
 import java.util.Scanner;
 
 public class AddToBalanceAction implements IAction{
+
     private Authorization authorization;
     private CardService cardService;
 

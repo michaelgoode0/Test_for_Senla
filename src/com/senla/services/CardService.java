@@ -2,7 +2,6 @@ package com.senla.services;
 
 import com.senla.dao.CardDAO;
 import com.senla.entity.Card;
-import com.senla.fileworker.FileWorker;
 
 import java.io.IOException;
 import java.util.List;

@@ -10,7 +10,7 @@ import com.senla.fileworker.Parser;
 import com.senla.services.CardService;
 
 public class Initializer {
-    String path = "src/com/senla/resources/data/Card.txt";
+    String path = "./src/com/senla/resources/data/Card.txt";
 
     FileWorker fileWorker = new FileWorker(path);
     Parser parser = new Parser(fileWorker);
@@ -21,7 +21,7 @@ public class Initializer {
 
     Authorization authorization = new Authorization(cardService);
 
-    public void run() throws Exception {
+    public void run() {
         MenuController menu = new MenuController(authorization, new Builder(authorization, cardService), new Navigator());
         menu.run();
     }
