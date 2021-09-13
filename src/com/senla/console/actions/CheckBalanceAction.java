@@ -3,8 +3,8 @@ package com.senla.console.actions;
 import com.senla.services.CardService;
 
 public class CheckBalanceAction implements IAction{
-    private Authorization authorization;
-    private CardService cardService;
+    private final Authorization authorization;
+    private final CardService cardService;
 
     public CheckBalanceAction(Authorization authorization, CardService cardService) {
         this.authorization = authorization;
@@ -13,6 +13,6 @@ public class CheckBalanceAction implements IAction{
 
     @Override
     public void execute() throws Exception {
-        System.out.println("Ваш баланс равен: " + authorization.getCard().getBalance());
+        System.out.println("Your balance: " + cardService.checkBalance(authorization.getCard()));
     }
 }

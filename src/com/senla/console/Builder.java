@@ -2,6 +2,7 @@ package com.senla.console;
 
 import com.senla.console.actions.Authorization;
 import com.senla.console.actions.*;
+import com.senla.console.items.Menu;
 import com.senla.console.items.MenuItem;
 import com.senla.services.CardService;
 
@@ -10,8 +11,8 @@ public class Builder {
 
 	private Menu rootMenu;
 	private Menu authMenu;
-	private Authorization authorization;
-	private CardService cardService;
+	private final Authorization authorization;
+	private final CardService cardService;
 
 	public Builder(Authorization authorization, CardService cardService) {
 		this.authorization = authorization;

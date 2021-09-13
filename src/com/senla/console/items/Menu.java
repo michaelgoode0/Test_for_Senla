@@ -1,9 +1,10 @@
-package com.senla.console;
+package com.senla.console.items;
 
 
 import com.senla.console.items.MenuItem;
 
 public class Menu {
+
 
 	private String name;
 	private MenuItem[] menuItems;

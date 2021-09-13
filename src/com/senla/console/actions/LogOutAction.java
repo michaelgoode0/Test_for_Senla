@@ -10,5 +10,6 @@ public class LogOutAction implements IAction{
     @Override
     public void execute() throws Exception {
         authorization.setCard(null);
+        System.out.println("Logging out...");
     }
 }

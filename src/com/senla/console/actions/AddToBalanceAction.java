@@ -7,8 +7,8 @@ import java.util.Scanner;
 
 public class AddToBalanceAction implements IAction{
 
-    private Authorization authorization;
-    private CardService cardService;
+    private final Authorization authorization;
+    private final CardService cardService;
 
     public AddToBalanceAction(Authorization authorization, CardService cardService) {
         this.authorization = authorization;
@@ -17,10 +17,14 @@ public class AddToBalanceAction implements IAction{
 
     @Override
     public void execute() throws Exception {
-        System.out.println("Введите сумму для пополнения");
+        System.out.println("Enter a sum");
         String sum=new Scanner(System.in).nextLine();
         Card card = authorization.getCard();
-        cardService.addToBalance(Integer.parseInt(sum),card);
-        System.out.println("Баланс пополнен на " + sum);
+        try {
+            cardService.addToBalance(Integer.parseInt(sum), card);
+        }catch (NumberFormatException e){
+            System.out.println("Incorrect sum");
+        }
+
     }
 }

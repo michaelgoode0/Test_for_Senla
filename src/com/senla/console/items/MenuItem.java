@@ -1,9 +1,6 @@
 package com.senla.console.items;
 
-import com.senla.console.Menu;
 import com.senla.console.actions.IAction;
-
-import java.io.IOException;
 
 public class MenuItem {
 
