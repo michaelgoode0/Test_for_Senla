@@ -11,7 +11,7 @@ public class Authorization implements IAction {
 
     private Card card;
 
-    private final CardService cardService;
+    private CardService cardService;
 
     public Authorization(CardService cardService) {
         this.cardService = cardService;

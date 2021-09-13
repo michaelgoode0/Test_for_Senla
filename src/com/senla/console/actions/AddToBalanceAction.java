@@ -7,8 +7,8 @@ import java.util.Scanner;
 
 public class AddToBalanceAction implements IAction{
 
-    private final Authorization authorization;
-    private final CardService cardService;
+    private Authorization authorization;
+    private CardService cardService;
 
     public AddToBalanceAction(Authorization authorization, CardService cardService) {
         this.authorization = authorization;

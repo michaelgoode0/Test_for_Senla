@@ -26,7 +26,7 @@ public class Navigator {
 			}
 		}
 		catch (ArrayIndexOutOfBoundsException e){
-			System.out.println("This Menu item doesn't exist");
+			System.out.println("This menu item doesn't exist");
 		}
 	}
 

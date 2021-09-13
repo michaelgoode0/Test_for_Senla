@@ -10,9 +10,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CardDAO implements ICardDAO {
-    private Parser parser;
-    private FileWorker fileWorker;
-    private String path;
+    private final Parser parser;
+    private final FileWorker fileWorker;
+    private final String path;
 
     public CardDAO(Parser parser, FileWorker fileWorker, String path) {
         this.fileWorker = fileWorker;
@@ -25,8 +25,7 @@ public class CardDAO implements ICardDAO {
     }
 
     public List<Card> getListOfCards() throws Exception {
-        List<Card> listOfCards = parser.parseCards(path);
-        return listOfCards;
+        return parser.parseCards(path);
     }
     public Card getCard(String cardNumber) throws Exception{
         for (var i : getListOfCards()) {
@@ -45,7 +44,7 @@ public class CardDAO implements ICardDAO {
                 listOfCards.set(index, card);
             }
         }
-        StringBuffer update = new StringBuffer();
+        StringBuilder update = new StringBuilder();
         for (var i : listOfCards) {
             update.append(i.toString()).append(" ");
         }
