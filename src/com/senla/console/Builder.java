@@ -10,8 +10,8 @@ public class Builder {
 
 	private Menu rootMenu;
 	private Menu authMenu;
-	private Authorization authorization;
-	private CardService cardService;
+	private final Authorization authorization;
+	private final CardService cardService;
 
 	public Builder(Authorization authorization, CardService cardService) {
 		this.authorization = authorization;

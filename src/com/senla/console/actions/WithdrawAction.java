@@ -7,8 +7,8 @@ import java.util.Scanner;
 
 public class WithdrawAction implements IAction{
 
-    private Authorization authorization;
-    private CardService cardService;
+    private final Authorization authorization;
+    private final CardService cardService;
 
     public WithdrawAction(Authorization authorization, CardService cardService) {
         this.authorization = authorization;
@@ -20,7 +20,10 @@ public class WithdrawAction implements IAction{
         System.out.println("Введите сумму");
         String sum=new Scanner(System.in).nextLine();
         Card card= authorization.getCard();
+        try{
         cardService.withdrawBalance(Integer.parseInt(sum),card);
-        System.out.println("Сумма снятия: "+sum);
+        }catch (NumberFormatException e){
+            System.out.println("Некорректная сумма");
+        }
     }
 }

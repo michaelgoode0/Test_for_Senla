@@ -20,7 +20,11 @@ public class AddToBalanceAction implements IAction{
         System.out.println("Введите сумму для пополнения");
         String sum=new Scanner(System.in).nextLine();
         Card card = authorization.getCard();
-        cardService.addToBalance(Integer.parseInt(sum),card);
-        System.out.println("Баланс пополнен на " + sum);
+        try {
+            cardService.addToBalance(Integer.parseInt(sum), card);
+        }catch (NumberFormatException e){
+            System.out.println("Некорректная сумма");
+        }
+
     }
 }

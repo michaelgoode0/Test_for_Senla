@@ -1,11 +1,11 @@
 package com.senla.fileworker;
 
 import com.senla.entity.Card;
+import com.senla.enums.Status;
 
 import java.io.IOException;
-import java.nio.file.FileSystems;
-import java.nio.file.Files;
-import java.nio.file.Path;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,23 +14,26 @@ public class Parser {
     public Parser(FileWorker fileWorker){
         this.fileWorker=fileWorker;
     }
-    public List<Card> parseCards(String path) throws IOException {
+    public List<Card> parseCards(String path) throws IOException, ParseException {
         String[] items= fileWorker.getString(path).split(" ");
         List<Card> cards= new ArrayList<>();
         for(var item:items){
             if(!item.equals("")){
-                String[] values=item.split(String.valueOf(","));
+                String[] values=item.split(",");
                 cards.add(convertToCard(values));
             }
         }
         return cards;
     }
-    public Card convertToCard(String []values){
+    public Card convertToCard(String []values) throws ParseException {
         Card card=new Card();
         card.setNumber(values[0]);
         card.setCode(Integer.parseInt(values[1]));
         card.setBalance(Integer.parseInt(values[2]));
-
+        card.setStatus(Status.valueOf(values[3]));
+        card.setUnCorrectInputCount(Integer.parseInt(values[4]));
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        card.setDateOfBlock(values[5]);
         return card;
     }
 }

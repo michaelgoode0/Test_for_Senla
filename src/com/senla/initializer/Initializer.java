@@ -9,6 +9,8 @@ import com.senla.fileworker.FileWorker;
 import com.senla.fileworker.Parser;
 import com.senla.services.CardService;
 
+import java.util.Date;
+
 public class Initializer {
     String path = "./src/com/senla/resources/data/Card.txt";
 
@@ -24,6 +26,8 @@ public class Initializer {
     public void run() {
         MenuController menu = new MenuController(authorization, new Builder(authorization, cardService), new Navigator());
         menu.run();
+
+
     }
 }
 

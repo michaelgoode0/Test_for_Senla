@@ -5,6 +5,7 @@ import com.senla.fileworker.FileWorker;
 import com.senla.fileworker.Parser;
 
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,11 +24,11 @@ public class CardDAO implements ICardDAO {
         fileWorker.writeString(card.toString(), true);
     }
 
-    public List<Card> getListOfCards() throws IOException {
+    public List<Card> getListOfCards() throws Exception {
         List<Card> listOfCards = parser.parseCards(path);
         return listOfCards;
     }
-    public Card getCard(String cardNumber) throws IOException {
+    public Card getCard(String cardNumber) throws Exception{
         for (var i : getListOfCards()) {
             if (i.getNumber().equals(cardNumber)) {
                 return i;
