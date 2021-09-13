@@ -103,7 +103,7 @@ public class CardService {
             Date currentDate = new Date();
             Date dateOfBlock = simpleDateFormat.parse(card.getDateOfBlock());
             long min = ((currentDate.getTime() - dateOfBlock.getTime()) / 60000);
-            if (min > 3) {
+            if (min > 1400) {
                 card.setStatus(Status.ACTIVE);
                 card.setUnCorrectInputCount(0);
                 card.setDateOfBlock("0");
