@@ -1,15 +1,17 @@
 package com.senla.console.actions;
 
-public class LogOutAction implements IAction{
-    private Authorization authorization;
+import com.senla.entity.Session;
 
-    public LogOutAction(Authorization authorization) {
-        this.authorization = authorization;
+public class LogOutAction implements IAction{
+    private Session session;
+
+    public LogOutAction(Session session) {
+        this.session = session;
     }
 
     @Override
     public void execute() throws Exception {
-        authorization.setCard(null);
+        session.setCard(null);
         System.out.println("Logging out...");
     }
 }

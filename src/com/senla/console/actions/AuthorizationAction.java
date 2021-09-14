@@ -1,19 +1,21 @@
 package com.senla.console.actions;
 
 import com.senla.entity.Card;
+import com.senla.entity.Session;
 import com.senla.services.CardService;
 import com.senla.enums.Status;
 
 import java.text.SimpleDateFormat;
 import java.util.Scanner;
 
-public class Authorization implements IAction {
+public class AuthorizationAction implements IAction {
 
-    private Card card;
+    private Session session;
 
-    private CardService cardService;
+    private final CardService cardService;
 
-    public Authorization(CardService cardService) {
+    public AuthorizationAction(Session session, CardService cardService) {
+        this.session = session;
         this.cardService = cardService;
     }
 
@@ -41,7 +43,7 @@ public class Authorization implements IAction {
             if (cardService.compareCardCode(Integer.parseInt(inputCode))) {
                 card.setUnCorrectInputCount(0);
                 cardService.update(card);
-                setCard(card);
+                session.setCard(card);
             } else {
                 card.setUnCorrectInputCount(card.getUnCorrectInputCount() + 1);
                 cardService.update(card);
@@ -55,16 +57,11 @@ public class Authorization implements IAction {
     }
 
 
-
-    public boolean isAuthenticated() {
-        return this.card != null;
+    public Session getSession() {
+        return session;
     }
 
-    public Card getCard() {
-        return card;
-    }
-
-    public void setCard(Card card) {
-        this.card = card;
+    public void setSession(Session session) {
+        this.session = session;
     }
 }

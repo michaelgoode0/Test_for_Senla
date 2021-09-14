@@ -1,19 +1,21 @@
 package com.senla.console;
 
-import com.senla.console.actions.Authorization;
+import com.senla.entity.Session;
+import com.senla.services.SessionService;
 
-import java.net.Authenticator;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class MenuController {
 
-    private final Authorization authorization;
+    private final SessionService service;
+    private final Session session;
     private final Builder builder;
     private final Navigator navigator;
 
-    public MenuController(Authorization authorization, Builder builder, Navigator navigator) {
-        this.authorization = authorization;
+    public MenuController(SessionService service, Session session, Builder builder, Navigator navigator) {
+        this.service = service;
+        this.session = session;
         this.builder = builder;
         this.navigator = navigator;
     }
@@ -33,10 +35,10 @@ public class MenuController {
                     System.out.println("Invalid menu item");
                 }
                 navigator.navigate(choice);
-                if (authorization.isAuthenticated()) {
+                if (service.isAuthenticated(session)) {
                     navigator.setCurrentMenu(builder.getRootMenu());
                 }
-                if (!authorization.isAuthenticated()) {
+                if (!service.isAuthenticated(session)) {
                     navigator.setCurrentMenu(builder.getAuthMenu());
                 }
             }
