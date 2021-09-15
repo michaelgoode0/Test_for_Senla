@@ -1,4 +1,4 @@
-package com.senla;
+package com.senla.main;
 
 import com.senla.initializer.Initializer;
 
