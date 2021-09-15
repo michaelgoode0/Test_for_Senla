@@ -4,17 +4,14 @@ import com.senla.entity.Card;
 import com.senla.fileworker.FileWorker;
 import com.senla.fileworker.Parser;
 
-import java.io.IOException;
-import java.text.ParseException;
-import java.util.ArrayList;
 import java.util.List;
 
-public class CardDAO implements ICardDAO {
+public class CardDao implements ICardDao {
     private final Parser parser;
     private final FileWorker fileWorker;
     private final String path;
 
-    public CardDAO(Parser parser, FileWorker fileWorker, String path) {
+    public CardDao(Parser parser, FileWorker fileWorker, String path) {
         this.fileWorker = fileWorker;
         this.parser = parser;
         this.path = path;

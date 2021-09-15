@@ -4,7 +4,7 @@ import com.senla.entity.Card;
 
 import java.util.List;
 
-public interface ICardDAO {
+public interface ICardDao {
     void saveCard(Card card);
 
     List<Card> getListOfCards() throws Exception;

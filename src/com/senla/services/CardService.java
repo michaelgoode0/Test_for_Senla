@@ -1,6 +1,6 @@
 package com.senla.services;
 
-import com.senla.dao.CardDAO;
+import com.senla.dao.CardDao;
 import com.senla.entity.Card;
 import com.senla.enums.Status;
 
@@ -12,9 +12,9 @@ import java.util.regex.Pattern;
 
 public class CardService {
 
-    private final CardDAO cardDAO;
+    private final CardDao cardDAO;
 
-    public CardService(CardDAO cardDAO) {
+    public CardService(CardDao cardDAO) {
         this.cardDAO = cardDAO;
     }
 

@@ -3,7 +3,7 @@ package com.senla.initializer;
 import com.senla.console.Builder;
 import com.senla.console.MenuController;
 import com.senla.console.Navigator;
-import com.senla.dao.CardDAO;
+import com.senla.dao.CardDao;
 import com.senla.entity.Session;
 import com.senla.fileworker.FileWorker;
 import com.senla.fileworker.Parser;
@@ -17,7 +17,7 @@ public class Initializer {
     FileWorker fileWorker = new FileWorker(path);
     Parser parser = new Parser(fileWorker);
 
-    CardDAO cardDAO = new CardDAO(parser, fileWorker, path);
+    CardDao cardDAO = new CardDao(parser, fileWorker, path);
 
     CardService cardService = new CardService(cardDAO);
 
