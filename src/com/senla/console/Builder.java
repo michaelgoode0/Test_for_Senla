@@ -6,16 +6,19 @@ import com.senla.console.items.Menu;
 import com.senla.console.items.MenuItem;
 import com.senla.entity.Session;
 import com.senla.services.CardService;
+import com.senla.services.SessionService;
 
 public class Builder {
 	private Menu rootMenu;
 	private Menu authMenu;
 	private final Session session;
 	private final CardService cardService;
+	private final SessionService sessionService;
 
-	public Builder(Session session, CardService cardService) {
+	public Builder(Session session, CardService cardService, SessionService sessionService) {
 		this.session = session;
 		this.cardService = cardService;
+		this.sessionService = sessionService;
 	}
 
 	public Menu getAuthMenu() {
@@ -39,7 +42,7 @@ public class Builder {
 		MenuItem checkBalance= new MenuItem("Check balance",new CheckBalanceAction(session,cardService),rootMenu);
 		MenuItem addToBalance = new MenuItem("Add to balance", new AddToBalanceAction(session,cardService),rootMenu);
 		MenuItem withDrawBalance = new MenuItem("Withdraw", new WithdrawAction(session,cardService),rootMenu);
-		MenuItem exit1 = new MenuItem("Log out", new LogOutAction(session), rootMenu);
+		MenuItem exit1 = new MenuItem("Log out", new LogOutAction(session,sessionService), rootMenu);
 
 		rootMenu.setMenuItems(new MenuItem[] {checkBalance,addToBalance,withDrawBalance,exit1});
 		setRootMenu(rootMenu);

@@ -24,7 +24,7 @@ public class Initializer {
     SessionService service= new SessionService();
 
     public void run() {
-        MenuController menu = new MenuController(service,session, new Builder(session, cardService), new Navigator());
+        MenuController menu = new MenuController(service,session, new Builder(session, cardService,service), new Navigator());
         menu.run();
     }
 }
