@@ -1,8 +1,9 @@
 package com.senla.dao;
 
 import com.senla.entity.Card;
-import com.senla.fileworker.FileWorker;
-import com.senla.fileworker.Parser;
+import com.senla.tools.Converter;
+import com.senla.tools.fileworker.FileWorker;
+import com.senla.tools.fileworker.Parser;
 
 import java.util.List;
 
@@ -18,7 +19,7 @@ public class CardDao implements ICardDao {
     }
 
     public void saveCard(Card card) {
-        fileWorker.writeString(card.toString(), true);
+        fileWorker.writeString(Converter.convertCardToString(card), true);
     }
 
     public List<Card> getListOfCards() throws Exception {
@@ -43,9 +44,8 @@ public class CardDao implements ICardDao {
         }
         StringBuilder update = new StringBuilder();
         for (var i : listOfCards) {
-            update.append(i.toString()).append(" ");
+            update.append(Converter.convertCardToString(i));
         }
         fileWorker.writeString(update.toString(), false);
     }
-
 }

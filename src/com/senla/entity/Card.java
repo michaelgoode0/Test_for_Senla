@@ -70,9 +70,4 @@ public class Card {
     public void setDateOfBlock(String dateOfBlock) {
         this.dateOfBlock = dateOfBlock;
     }
-
-    @Override
-    public String toString(){
-        return this.number+","+this.code+","+this.balance+","+this.status+","+this.unCorrectInputCount+","+this.dateOfBlock;
-    }
 }

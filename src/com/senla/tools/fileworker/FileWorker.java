@@ -1,4 +1,4 @@
-package com.senla.fileworker;
+package com.senla.tools.fileworker;
 
 import java.io.*;
 import java.nio.file.FileSystems;
@@ -15,7 +15,6 @@ public class FileWorker {
     public void writeString(String data, boolean bool) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(path, bool))) {
             writer.write(data);
-            writer.append(" ");
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
@@ -23,7 +22,7 @@ public class FileWorker {
     public String getString(String path) throws IOException {
         StringBuffer string = new StringBuffer();
         Path path1 = FileSystems.getDefault().getPath(path);
-        Files.lines(path1).forEach(k -> string.append(k).append(" "));
+        Files.lines(path1).forEach(k -> string.append(k).append("\n"));
         return string.toString();
     }
 }

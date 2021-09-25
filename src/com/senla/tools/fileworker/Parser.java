@@ -1,11 +1,9 @@
-package com.senla.fileworker;
+package com.senla.tools.fileworker;
 
 import com.senla.entity.Card;
 import com.senla.enums.Status;
 
 import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,11 +13,11 @@ public class Parser {
         this.fileWorker=fileWorker;
     }
     public List<Card> parseCards(String path) throws IOException {
-        String[] items= fileWorker.getString(path).split(" ");
+        String[] items= fileWorker.getString(path).split("\n");
         List<Card> cards= new ArrayList<>();
         for(var item:items){
             if(!item.equals("")){
-                String[] values=item.split(",");
+                String[] values=item.split(" ");
                 cards.add(convertToCard(values));
             }
         }
@@ -32,7 +30,9 @@ public class Parser {
         card.setBalance(Integer.parseInt(values[2]));
         card.setStatus(Status.valueOf(values[3]));
         card.setUnCorrectInputCount(Integer.parseInt(values[4]));
-        card.setDateOfBlock(values[5]);
+        if(card.getStatus()==Status.BLOCKED) {
+            card.setDateOfBlock(values[5]);
+        }
         return card;
     }
 }

@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class AuthorizationAction implements IAction {
 
-    private Session session;
+    private final Session session;
 
     private final CardService cardService;
 
@@ -54,14 +54,5 @@ public class AuthorizationAction implements IAction {
         } catch (NumberFormatException e) {
             System.out.println("Enter the numerical value of the pin-code");
         }
-    }
-
-
-    public Session getSession() {
-        return session;
-    }
-
-    public void setSession(Session session) {
-        this.session = session;
     }
 }

@@ -99,18 +99,18 @@ public class CardService {
     }
 
     public long unBlockCard(SimpleDateFormat simpleDateFormat,Card card) throws Exception {
-        if(!card.getDateOfBlock().equals("0")) {
+        if(card.getStatus()==Status.BLOCKED) {
             Date currentDate = new Date();
             Date dateOfBlock = simpleDateFormat.parse(card.getDateOfBlock());
             long min = ((currentDate.getTime() - dateOfBlock.getTime()) / 60000);
             if (min > 1400) {
                 card.setStatus(Status.ACTIVE);
                 card.setUnCorrectInputCount(0);
-                card.setDateOfBlock("0");
+                card.setDateOfBlock(null);
             }
             update(card);
             return min;
         }
-        else return 0;
+        return 0;
     }
 }
